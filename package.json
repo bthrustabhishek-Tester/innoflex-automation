@@ -1,0 +1,25 @@
+{
+  "name": "playwright-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:e2e": "npx playwright test --project=e2e",
+    "test:single-window": "npx playwright test tests/MasterSequentialRunner.spec.ts",
+    "test:sequence": "npx playwright test tests/login/ tests/lead/ tests/customer/",
+    "test:validation": "npx playwright test tests/login/LoginValidation.spec.ts tests/customer/CustomerValidation.spec.ts",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "antigravity-sdk": "^1.7.0"
+  },
+  "dependencies": {
+    "@sdetsanjay/autoheal-locator": "^1.1.5"
+  }
+}

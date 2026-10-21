@@ -48,48 +48,55 @@ export default defineConfig({
     // 0. Global Auth Setup
     {
       name: 'setup',
+      testDir: './tests/setup',
       testMatch: /.*\.setup\.ts/,
-    },
-
-    // Master Single Window Suite
-    {
-      name: 'single-window',
-      testMatch: /.*MasterSequentialRunner\.spec\.ts/,
-      timeout: 180000,
-      use: { ...devices['Desktop Chrome'] },
     },
 
     // End-to-End Workflow Project
     {
-      name: 'e2e',
-      testMatch: /.*EndToEndWorkflow\.spec\.ts/,
+      name: 'workflow',
+      testDir: './tests/e2e',
+      testMatch: /.*workflow\.spec\.ts/,
       timeout: 180000,
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // Multi-browser projects
+    // E2E Test Suite (Chrome)
+    {
+      name: 'e2e',
+      testDir: './tests/e2e',
+      use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
+      dependencies: ['setup'],
+    },
+
+    // Multi-browser projects for E2E
     {
       name: 'chromium',
+      testDir: './tests/e2e',
       use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
       dependencies: ['setup'],
     },
     {
       name: 'firefox',
+      testDir: './tests/e2e',
       use: { ...devices['Desktop Firefox'], storageState: STORAGE_STATE },
       dependencies: ['setup'],
     },
     {
       name: 'edge',
+      testDir: './tests/e2e',
       use: { ...devices['Desktop Edge'], channel: 'msedge', storageState: STORAGE_STATE },
       dependencies: ['setup'],
     },
     {
       name: 'webkit',
+      testDir: './tests/e2e',
       use: { ...devices['Desktop Safari'], storageState: STORAGE_STATE },
       dependencies: ['setup'],
     },
     {
       name: 'mobile-chrome',
+      testDir: './tests/e2e',
       use: { ...devices['Pixel 7'], storageState: STORAGE_STATE },
       dependencies: ['setup'],
     },
@@ -103,7 +110,7 @@ export default defineConfig({
       },
     },
 
-    // Destructive & Resiliency API tests
+    // Destructive & Resiliency API tests (10 Test Cases)
     {
       name: 'destructive',
       testDir: './tests/destructive',

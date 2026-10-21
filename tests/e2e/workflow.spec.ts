@@ -1,9 +1,9 @@
 import { test, expect, Page } from '@playwright/test';
-import { LoginPage } from '../pages/login/LoginPage';
-import { LeadPage, LeadData } from '../pages/lead/LeadPage';
-import { CustomerPage, CustomerData } from '../pages/customer/CustomerPage';
-import { env } from '../config/env';
-import { RandomData } from '../utils/RandomData';
+import { LoginPage } from '../../pages/login/LoginPage';
+import { LeadPage, LeadData } from '../../pages/lead/LeadPage';
+import { CustomerPage, CustomerData } from '../../pages/customer/CustomerPage';
+import { env } from '../../config/env';
+import { RandomData } from '../../utils/RandomData';
 
 test.describe.serial('Comprehensive End-to-End (E2E) Workflow Test Suite', () => {
     let page: Page;

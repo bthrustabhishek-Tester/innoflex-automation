@@ -4,7 +4,8 @@
   "description": "Playwright + TypeScript automation framework for Innoflex (FSM) application - POM based with Destructive & API Automation",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
+    "test": "playwright test --project=destructive",
+    "test:all": "playwright test",
     "test:dev": "cross-env ENV=dev playwright test",
     "test:stg": "cross-env ENV=stg playwright test",
     "test:uat": "cross-env ENV=uat playwright test",

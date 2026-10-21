@@ -1,8 +1,29 @@
-
-# Playwright
+# Dependencies
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+dist/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Test results & reports
+test-results/
+reports/
+screenshots/
+videos/
+traces/
+playwright-report/
+blob-report/
+*.log
+
+# IDE & OS files
+.DS_Store
+.idea/
+.vscode/
+.vs/
+
+# Playwright auth
+playwright/.cache/
+playwright/.auth/*.json
+!playwright/.auth/.gitkeep

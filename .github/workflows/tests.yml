@@ -1,0 +1,93 @@
+name: Playwright Tests - Innoflex
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npm run install:browsers
+
+      - name: Run Playwright tests
+        run: npm test -- --reporter=junit,html,allure-playwright
+        env:
+          CI: true
+          ENV: stg
+          RETRIES: 2
+          WORKERS: 2
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: html-report
+          path: reports/html-report/
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: allure-results
+          path: reports/allure-results/
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: junit-results
+          path: reports/junit-results.xml
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: screenshots
+          path: screenshots/
+
+      - name: Upload Videos
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: videos
+          path: videos/
+
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results
+          path: 'reports/junit-results.xml'
+          reporter: 'java-junit'
+
+      - name: Comment PR with Report Link
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Playwright tests completed! Check artifacts for reports.'
+            })

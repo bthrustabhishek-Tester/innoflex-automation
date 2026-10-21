@@ -1,0 +1,16 @@
+{
+  "valid": {
+    "title": "AC Repair - Unit 12B",
+    "customer": "Business Thrust Pte Ltd",
+    "assignedTechnician": "Ah Kow",
+    "scheduledDate": "2026-07-10",
+    "priority": "High",
+    "description": "AC unit not cooling, requires inspection and repair"
+  },
+  "invalid": {
+    "missingCustomer": { "title": "No Customer Job", "customer": "", "scheduledDate": "2026-07-10" }
+  },
+  "boundary": {
+    "lowPriority": { "title": "Routine Filter Change", "customer": "Business Thrust Pte Ltd", "scheduledDate": "2026-08-01", "priority": "Low" }
+  }
+}

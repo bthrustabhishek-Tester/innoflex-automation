@@ -1,0 +1,33 @@
+{
+  "valid": {
+    "title": "Site Inspection - Block A",
+    "customer": "Business Thrust Pte Ltd",
+    "technician": "Ah Kow",
+    "date": "2026-07-15",
+    "notes": "Routine maintenance check"
+  },
+  "invalid": {
+    "missingCustomer": {
+      "title": "No Customer Visit",
+      "customer": "",
+      "date": "2026-07-15"
+    },
+    "pastDate": {
+      "title": "Backdated Visit",
+      "customer": "Business Thrust Pte Ltd",
+      "date": "2020-01-01"
+    }
+  },
+  "boundary": {
+    "todayDate": {
+      "title": "Same Day Visit",
+      "customer": "Business Thrust Pte Ltd",
+      "date": "2026-07-01"
+    },
+    "farFutureDate": {
+      "title": "Long-Term Scheduled Visit",
+      "customer": "Business Thrust Pte Ltd",
+      "date": "2030-12-31"
+    }
+  }
+}

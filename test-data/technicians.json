@@ -1,0 +1,11 @@
+{
+  "valid": {
+    "name": "Ah Kow",
+    "email": "ahkow@bthrust-test.com",
+    "phone": "+65 9123 4567",
+    "skill": "HVAC"
+  },
+  "invalid": {
+    "missingEmail": { "name": "No Email Tech", "email": "", "phone": "+65 9123 4567" }
+  }
+}

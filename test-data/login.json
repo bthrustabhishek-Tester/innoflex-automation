@@ -1,0 +1,19 @@
+{
+  "valid": {
+    "email": "admin@bthrust.com",
+    "password": "#<5Xy0zRGu41"
+  },
+  "invalid": {
+    "wrongPassword": { "email": "admin@bthrust.com", "password": "WrongPass@999" },
+    "wrongEmail": { "email": "notregistered@bthrust.com", "password": "#<5Xy0zRGu41" },
+    "malformedEmail": { "email": "admin-bthrust.com", "password": "#<5Xy0zRGu41" },
+    "sqlInjection": { "email": "' OR '1'='1", "password": "' OR '1'='1" }
+  },
+  "boundary": {
+    "emptyEmail": { "email": "", "password": "#<5Xy0zRGu41" },
+    "emptyPassword": { "email": "admin@bthrust.com", "password": "" },
+    "emptyBoth": { "email": "", "password": "" },
+    "maxLengthEmail": { "email": "a_very_long_local_part_used_for_boundary_testing_purposes_1234567890@bthrust.com", "password": "#<5Xy0zRGu41" },
+    "singleCharPassword": { "email": "admin@bthrust.com", "password": "a" }
+  }
+}

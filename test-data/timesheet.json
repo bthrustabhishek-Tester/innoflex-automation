@@ -1,0 +1,14 @@
+{
+  "valid": {
+    "technician": "Ah Kow",
+    "job": "AC Repair - Unit 12B",
+    "date": "2026-07-10",
+    "hoursWorked": "4",
+    "notes": "Completed repair, tested unit"
+  },
+  "boundary": {
+    "zeroHours": { "technician": "Ah Kow", "date": "2026-07-10", "hoursWorked": "0" },
+    "maxHours": { "technician": "Ah Kow", "date": "2026-07-10", "hoursWorked": "24" },
+    "negativeHours": { "technician": "Ah Kow", "date": "2026-07-10", "hoursWorked": "-1" }
+  }
+}

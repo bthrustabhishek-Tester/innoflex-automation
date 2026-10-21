@@ -1,0 +1,50 @@
+name: Innoflex FSM Destructive & Resiliency Test Pipeline
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+  schedule:
+    - cron: '0 2 * * *' # Every night 2:00 AM UTC
+  workflow_dispatch:     # Manual trigger option
+
+jobs:
+  destructive-test-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_URL: ${{ secrets.STAGING_BASE_URL || 'https://stg-innoflex.businessthrust.com' }}
+      ADMIN_TOKEN: ${{ secrets.TEST_ADMIN_TOKEN }}
+      TECH_TOKEN: ${{ secrets.TEST_TECH_TOKEN }}
+      CUSTOMER_TOKEN: ${{ secrets.TEST_CUSTOMER_TOKEN }}
+      STG_USERNAME: ${{ secrets.STG_USERNAME }}
+      STG_PASSWORD: ${{ secrets.STG_PASSWORD }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Destructive Playwright API Tests
+        run: npx playwright test --project=destructive --reporter=list,html
+
+      - name: Upload HTML Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-destructive-report
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Alert on Security / Failure Bypass
+        if: failure()
+        run: |
+          echo "::error::System Breaker / Security Test Suite FAILED! Check report for state bypass or race conditions."

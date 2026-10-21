@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+test-results/
+reports/
+screenshots/
+videos/
+traces/
+playwright-report/
+blob-report/
+*.log
+.DS_Store
+.idea/
+.vscode/
+.vs/
+playwright/.auth/*.json
+!playwright/.auth/.gitkeep

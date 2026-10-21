@@ -1,0 +1,58 @@
+{
+  "valid": {
+    "title": "QA Automation Lead",
+    "companyName": "Business Thrust Pte Ltd",
+    "contactName": "John Tan",
+    "emailAddress": "john.tan@bthrust-test.com",
+    "source": "Website",
+    "assignTo": "Admin"
+  },
+  "validAlternate": {
+    "title": "Referral Lead - Q3",
+    "companyName": "Innoflex Solutions",
+    "contactName": "Mary Lee",
+    "emailAddress": "mary.lee@innoflex-test.com",
+    "source": "Referral",
+    "assignTo": "Admin"
+  },
+  "invalid": {
+    "missingTitle": {
+      "title": "",
+      "companyName": "Business Thrust Pte Ltd",
+      "contactName": "John Tan",
+      "emailAddress": "john.tan@bthrust-test.com"
+    },
+    "malformedEmail": {
+      "title": "Bad Email Lead",
+      "companyName": "Business Thrust Pte Ltd",
+      "contactName": "John Tan",
+      "emailAddress": "john.tan-bthrust.com"
+    },
+    "missingCompany": {
+      "title": "No Company Lead",
+      "companyName": "",
+      "contactName": "John Tan",
+      "emailAddress": "john.tan@bthrust-test.com"
+    }
+  },
+  "boundary": {
+    "maxLengthTitle": {
+      "title": "A_Title_That_Is_Exactly_At_The_Maximum_Character_Limit_Allowed_By_The_Title_Field_1234567890",
+      "companyName": "Boundary Co",
+      "contactName": "Boundary Tester",
+      "emailAddress": "boundary@bthrust-test.com"
+    },
+    "singleCharTitle": {
+      "title": "A",
+      "companyName": "Boundary Co",
+      "contactName": "Boundary Tester",
+      "emailAddress": "boundary2@bthrust-test.com"
+    },
+    "specialCharacters": {
+      "title": "Lead #1 - Test & Verify <QA>",
+      "companyName": "O'Brien & Sons",
+      "contactName": "José Ñuñez",
+      "emailAddress": "special.chars@bthrust-test.com"
+    }
+  }
+}

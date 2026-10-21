@@ -1,0 +1,18 @@
+{
+  "valid": {
+    "name": "Business Thrust Pte Ltd",
+    "email": "contact@bthrust-test.com",
+    "phone": "+65 6123 4567",
+    "address": "1 Marina Blvd, Singapore",
+    "company": "Business Thrust"
+  },
+  "invalid": {
+    "missingName": { "name": "", "email": "contact@bthrust-test.com", "phone": "+65 6123 4567" },
+    "malformedEmail": { "name": "Test Customer", "email": "bad-email", "phone": "+65 6123 4567" },
+    "malformedPhone": { "name": "Test Customer", "email": "contact@bthrust-test.com", "phone": "abc" }
+  },
+  "boundary": {
+    "longName": { "name": "A Very Long Customer Name Used Purely For Boundary Testing Purposes Limited", "email": "long@bthrust-test.com", "phone": "+65 6123 4567" },
+    "minimalName": { "name": "AB", "email": "min@bthrust-test.com", "phone": "+65 6123 4567" }
+  }
+}
